@@ -1,7 +1,11 @@
-﻿using System;
+﻿using AppLectorDNI.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AppLectorDNI.Services
@@ -12,12 +16,12 @@ namespace AppLectorDNI.Services
 
         public static bool VerificarDNI(object dato)
         {
+            var dato1 = dato as TextBox;
+            Socio socio = new Socio(dato1.Text.Split('"'));
+
+            return BuscarEnPdf.searchForText("C:\\Users\\gwissler\\source\\repos\\AppLectorDNI\\AppLectorDNI\\LISTADO-DE-SOCIOS.pdf", socio.ObtenerDNI().ToString());
+
             
-            List<string> datosLista = dato.ToString().Split(',').ToList();
-
-            string nuevoDato= datosLista[1].Remove(0,7);
-
-            return nuevoDato.Count() == 8;
         }
     }
 
