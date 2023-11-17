@@ -1,3 +1,4 @@
+using AppLectorDNI.Models;
 using AppLectorDNI.Services;
 namespace AppLectorDNI
 {
@@ -15,15 +16,33 @@ namespace AppLectorDNI
 
         private void textBox_Enter(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
-                
-                if(LectorService.VerificarDNI(sender))
+
+                if (LectorService.VerificarDNI(sender))
                 {
-                    MessageBox.Show(sender.ToString(),"mensaje correcto");
+                    label2.Text = "SOCIO VERIFICADO";
+                    //label2.BackColor = Color.LightSeaGreen;
+                    label2.ForeColor = Color.Lime;
+                    label2.Show();
+                    /*MessageBox.Show(sender.ToString(), "mensaje correcto")*/
                 }
-                else { MessageBox.Show(sender.ToString(), "mensaje incorrecto"); }
+                else
+                {
+                    label2.Text = "NO ENCONTRADO";
+                    //label2.BackColor = Color.RosyBrown;
+                    label2.ForeColor = Color.Red;
+                    label2.Show();
+                    /*MessageBox.Show(sender.ToString(), "mensaje incorrecto");*/
+                }
+
+                textBox1.Text = string.Empty;
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
