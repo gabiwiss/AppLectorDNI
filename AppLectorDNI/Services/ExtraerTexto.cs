@@ -11,26 +11,29 @@ using static PdfSharp.Snippets.Drawing.ImageHelper;
 
 namespace AppLectorDNI.Services
 {
-    public class BuscarEnPdf
+    public class ExtraerTexto
     {
-        public static bool searchForText(string path, string dni)
+        //public static string searchForText(string path, string dni)
+        //{
+        //    PdfReader pdfReader = new PdfReader(path);
+        //    PdfDocument pdfParser = new PdfDocument(pdfReader);
+
+        //    // extract the text
+        //    return  ExtractTextFromPdf(pdfParser);
+
+              
+        //}
+
+        public static string ExtractTextFromPdf(string path)
         {
             PdfReader pdfReader = new PdfReader(path);
             PdfDocument pdfParser = new PdfDocument(pdfReader);
 
-            // extract the text
-            var text =  ExtractTextFromPdf(pdfParser);
-
-            return text.Contains(dni);   
-        }
-
-        public static string ExtractTextFromPdf(PdfDocument pdfDoc)
-        {
             StringWriter output = new StringWriter();
 
-            for (int i = 1; i <= pdfDoc.GetNumberOfPages(); i++)
+            for (int i = 1; i <= pdfParser.GetNumberOfPages(); i++)
             {
-                PdfPage page = pdfDoc.GetPage(i);
+                PdfPage page = pdfParser.GetPage(i);
                 ITextExtractionStrategy strategy = new LocationTextExtractionStrategy();
                 string text = PdfTextExtractor.GetTextFromPage(page, strategy);
                 output.WriteLine(text);

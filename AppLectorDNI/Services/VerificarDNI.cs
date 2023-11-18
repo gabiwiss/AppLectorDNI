@@ -14,15 +14,16 @@ namespace AppLectorDNI.Services
     {
         public LectorService() { }
 
-        public static bool VerificarDNI(object dato)
+        public static bool VerificarDNI(object dato, TextoPDF textoPDF)
         {
             var dato1 = dato as TextBox;
             Socio socio = new Socio(dato1.Text.Split('"'));
 
-            return BuscarEnPdf.searchForText("C:\\Users\\gwissler\\source\\repos\\AppLectorDNI\\AppLectorDNI\\LISTADO-DE-SOCIOS.pdf", socio.ObtenerDNI().ToString());
+            //return BuscarEnPdf.searchForText("C:\\Users\\gabi\\Source\\Repos\\gabiwiss\\AppLectorDNI\\AppLectorDNI\\LISTADO-DE-SOCIOS.pdf", socio.ObtenerDNI().ToString());
 
-            
+            return textoPDF.devolverTexto().Contains(socio.ObtenerDNI().ToString());
         }
     }
 
 }
+

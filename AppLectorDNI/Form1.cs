@@ -4,9 +4,11 @@ namespace AppLectorDNI
 {
     public partial class Form1 : Form
     {
+        private readonly TextoPDF textoPDF;
         public Form1()
         {
             InitializeComponent();
+            textoPDF = new TextoPDF("C:\\Users\\gabi\\Source\\Repos\\gabiwiss\\AppLectorDNI\\AppLectorDNI\\LISTADO-DE-SOCIOS.pdf");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -19,7 +21,7 @@ namespace AppLectorDNI
             if (e.KeyCode == Keys.Enter)
             {
 
-                if (LectorService.VerificarDNI(sender))
+                if (LectorService.VerificarDNI(sender,textoPDF))
                 {
                     label2.Text = "SOCIO VERIFICADO";
                     //label2.BackColor = Color.LightSeaGreen;
