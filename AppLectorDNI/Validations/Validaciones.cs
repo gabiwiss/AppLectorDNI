@@ -9,11 +9,22 @@ namespace AppLectorDNI.Validations
 {
     public class Validaciones
     {
-        public Validaciones() { }
+        private MatchCollection match;
+        public Validaciones() 
+        {
+            
+        }
 
         public static bool ValidarNumero(string dato) 
         {   
-            return Regex.IsMatch(dato, @"^\d{8}$");
+            
+            foreach (Match m in Regex.Matches(dato, @"\d*$"))
+            {
+                Console.WriteLine(m.Value);
+                return (m.Value != null);
+               
+            }
+            return false;
         }
     }
 }
