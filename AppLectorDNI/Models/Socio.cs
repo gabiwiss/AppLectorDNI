@@ -16,7 +16,7 @@ namespace AppLectorDNI.Models
             Apellido = datosSocio[1];
             Nombre = datosSocio[2];
             Genero = datosSocio[3];
-            DNI = Convert.ToInt32(datosSocio[4]);
+            DNI = datosSocio[4];
             Ejemplar = datosSocio[5];
             FechaNacimiento = DateOnly.Parse(datosSocio[6]);
             FechaDeEmision = DateOnly.Parse(datosSocio[7]);
@@ -27,15 +27,17 @@ namespace AppLectorDNI.Models
         private string Apellido { get; set; }
         private string Nombre { get; set; }
         private string Genero { get; set; }
-        private int DNI { get; set; }
+        private string DNI { get; set; }
         private string Ejemplar { get; set; }
         private DateOnly FechaNacimiento { get; set; }
         private DateOnly FechaDeEmision { get; set; }
         private int Numero2 { get; set; }
 
-        public int ObtenerDNI()
+        public string ObtenerDNI()
         {
             return DNI; 
         }
     }
 }
+
+
