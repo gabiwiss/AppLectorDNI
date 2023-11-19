@@ -19,9 +19,19 @@ namespace AppLectorDNI.Services
         {
             var dato1 = dato as TextBox;
             if (dato1.Text.Contains('"')) 
-            { 
-                Socio socio = new Socio(dato1.Text.Split('"')); 
-                return textoPDF.devolverTexto().Contains(socio.ObtenerDNI().ToString());
+            {
+                try
+                {
+                    Socio socio = new Socio(dato1.Text.Split('"'));
+                    return textoPDF.devolverTexto().Contains(socio.ObtenerDNI().ToString());
+                }
+                catch (Exception)
+                {
+
+                    return false;
+                }
+                
+                
             }
             else
             {
