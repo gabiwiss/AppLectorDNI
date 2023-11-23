@@ -12,15 +12,15 @@ namespace AppLectorDNI.Models
 
         public Socio(string[] datosSocio)
         {
-            Numero = Convert.ToInt32(datosSocio[0]);
-            Apellido = datosSocio[1];
-            Nombre = datosSocio[2];
-            Genero = datosSocio[3];
+            //Numero = Convert.ToInt32(datosSocio[0]);
+            //Apellido = datosSocio[1];
+            //Nombre = datosSocio[2];
+            //Genero = datosSocio[3];
             DNI = datosSocio[4];
-            Ejemplar = datosSocio[5];
-            FechaNacimiento = DateOnly.Parse(datosSocio[6]);
-            FechaDeEmision = DateOnly.Parse(datosSocio[7]);
-            Numero2 = Convert.ToInt32(datosSocio[8]);
+            //Ejemplar = datosSocio[5];
+            //FechaNacimiento = DateOnly.Parse(datosSocio[6]);
+            //FechaDeEmision = DateOnly.Parse(datosSocio[7]);
+            //Numero2 = Convert.ToInt32(datosSocio[8]);
         }
         
         private int Numero { get; }
