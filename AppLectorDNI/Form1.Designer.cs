@@ -31,15 +31,17 @@
             label1 = new Label();
             textBox1 = new TextBox();
             label2 = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 40F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Gainsboro;
-            label1.Location = new Point(35, 30);
+            label1.Location = new Point(34, 47);
             label1.Name = "label1";
             label1.Size = new Size(723, 72);
             label1.TabIndex = 0;
@@ -48,7 +50,9 @@
             // 
             // textBox1
             // 
+            textBox1.Anchor = AnchorStyles.None;
             textBox1.BackColor = Color.Black;
+            textBox1.ForeColor = Color.Lime;
             textBox1.Location = new Point(331, 192);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(100, 23);
@@ -57,6 +61,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 50F, FontStyle.Regular, GraphicsUnit.Point);
@@ -69,12 +74,23 @@
             label2.Visible = false;
             label2.Click += label2_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(34, 388);
+            button1.Name = "button1";
+            button1.Size = new Size(150, 40);
+            button1.TabIndex = 3;
+            button1.Text = "SELECCIONE ARCHIVO PDF";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(textBox1);
             Controls.Add(label1);
@@ -89,5 +105,6 @@
         private Label label1;
         private TextBox textBox1;
         private Label label2;
+        private Button button1;
     }
 }
