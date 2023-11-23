@@ -17,29 +17,34 @@ namespace AppLectorDNI.Services
 
         public static bool VerificarDNI(object dato, TextoPDF textoPDF)
         {
-            var dato1 = dato as TextBox;
-            if (dato1.Text.Contains('"')) 
+            var textBox = dato as TextBox;
+            var temp = "";
+            if (textBox.Text.Contains('"')) 
             {
                 try
                 {
-                    Socio socio = new Socio(dato1.Text.Split('"'));
-                    return textoPDF.devolverTexto().Contains(socio.ObtenerDNI().ToString());
+                    Socio socio = new Socio(textBox.Text.Split('"'));
+
+                    temp=Validaciones.ExtraerNumeros(socio.ObtenerDNI());
+
+                    if (Validaciones.ValidarNumero(temp))
+                        return textoPDF.devolverTexto().Contains(temp);
+                    else
+                        return false;
                 }
                 catch (Exception)
                 {
 
                     return false;
                 }
-                
-                
             }
             else
             {
-                if (Validaciones.ValidarNumero(dato1.Text))
-                {
-                    return textoPDF.devolverTexto().Contains(dato1.Text);
-                }
-                return false;
+                temp=Validaciones.ExtraerNumeros(textBox.Text);
+                if (Validaciones.ValidarNumero(temp))
+                    return textoPDF.devolverTexto().Contains(temp);
+                else
+                    return false;
             }
             
 

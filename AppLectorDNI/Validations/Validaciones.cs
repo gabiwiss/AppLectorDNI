@@ -15,16 +15,19 @@ namespace AppLectorDNI.Validations
             
         }
 
-        public static bool ValidarNumero(string dato) 
+        public static string ExtraerNumeros(string dato) 
         {   
             
             foreach (Match m in Regex.Matches(dato, @"\d*$"))
             {
-                Console.WriteLine(m.Value);
-                return (m.Value != null);
-               
+                return m.Value;
             }
-            return false;
+            return dato;
+        }
+
+        public static bool ValidarNumero(string dato) 
+        {
+            return Regex.IsMatch(dato, @"^\d+$");
         }
     }
 }
