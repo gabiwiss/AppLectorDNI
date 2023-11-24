@@ -13,8 +13,15 @@ namespace AppLectorDNI
         {
             InitializeComponent();
             directorio = AppDomain.CurrentDomain.BaseDirectory.Replace("\\net6.0-windows", "");
-            textoPDF = new TextoPDF(Path.Combine(directorio, "marcos.pdf"));
+            textoPDF = new TextoPDF(Path.Combine(directorio, "archivo.pdf"));
             timer = new System.Windows.Forms.Timer();
+
+            if (textoPDF.devolverTexto() == "error")
+            {
+                label2.Text = "FALTA ARCHIVO";
+                label2.ForeColor = Color.Red;
+                label2.Show();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -74,6 +81,7 @@ namespace AppLectorDNI
                 // Crear una ruta temporal para el archivo
                 string rutaTemporal = Path.GetTempFileName();
 
+
                 // Copiar el archivo seleccionado a la ruta temporal
                 File.Copy(nombreArchivo, rutaTemporal, true);
 
@@ -81,13 +89,20 @@ namespace AppLectorDNI
                 //string rutaPrograma = AppDomain.CurrentDomain.BaseDirectory.Replace("\\net6.0-windows","");
 
                 // Combinar la ruta del programa con el nombre del archivo seleccionado
-                string nuevaRuta = Path.Combine(directorio, Path.GetFileName(nombreArchivo));
+                string nuevaRuta = Path.Combine(directorio, "archivo.pdf");
 
                 // Mover el archivo desde la ruta temporal a la carpeta del programa
-            
-                File.Move(rutaTemporal, nuevaRuta,true);
+
+                File.Move(rutaTemporal, nuevaRuta, true);
 
                 Console.WriteLine("Archivo PDF guardado en: " + nuevaRuta);
+
+                textoPDF.guardarTexto(ExtraerTexto.ExtractTextFromPdf(nuevaRuta));
+
+                label2.Text = "ARCHIVO CARGADO";
+                label2.ForeColor = Color.Lime;
+                label2.Show();
+
             }
         }
     }

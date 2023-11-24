@@ -53,7 +53,7 @@
             textBox1.Anchor = AnchorStyles.None;
             textBox1.BackColor = Color.Black;
             textBox1.ForeColor = Color.Lime;
-            textBox1.Location = new Point(331, 192);
+            textBox1.Location = new Point(355, 192);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(100, 23);
             textBox1.TabIndex = 1;
@@ -66,7 +66,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 50F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Red;
-            label2.Location = new Point(96, 258);
+            label2.Location = new Point(99, 259);
             label2.Name = "label2";
             label2.Size = new Size(581, 89);
             label2.TabIndex = 2;
