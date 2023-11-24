@@ -38,7 +38,8 @@ namespace AppLectorDNI.Services
                 string text = PdfTextExtractor.GetTextFromPage(page, strategy);
                 output.WriteLine(text);
             }
-
+            pdfParser.Close();
+            pdfReader.Close();
             return output.ToString();
         }
     }
