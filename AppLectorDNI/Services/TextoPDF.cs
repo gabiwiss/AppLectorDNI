@@ -8,16 +8,25 @@ namespace AppLectorDNI.Services
 {
     public class TextoPDF
     {
-        private readonly string Text;
+        private string Text;
 
         public TextoPDF (string path)
         {
             if (Text == null)
             {
-                Text = ExtraerTexto.ExtractTextFromPdf(path);
+                if (File.Exists (path))
+                {
+                    Text = ExtraerTexto.ExtractTextFromPdf(path);
+                }
+                else { Text = "error"; }
+                
             }
         }
 
-       public string devolverTexto() { return Text; }
+        public string devolverTexto() { return Text; }
+        public void guardarTexto(string text)
+        { 
+            Text=text; 
+        }
     }
 }
