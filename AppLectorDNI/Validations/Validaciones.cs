@@ -27,7 +27,7 @@ namespace AppLectorDNI.Validations
 
         public static bool ValidarNumero(string dato) 
         {
-            return Regex.IsMatch(dato, @"^\d+$");
+            return Regex.IsMatch(dato, @"^\d{6,}$");
         }
     }
-}
+}   
